@@ -4,8 +4,8 @@
 
 This repository contains the following: 
 
-- Assignments completed during different Courseera courses
-- The practice work done to learn TensorFlow and Python Scikit-learn
+- Assignments completed during different online courses
+- Practice work done to learn TensorFlow and Python Scikit-learn
 
 **Repositories**
 
