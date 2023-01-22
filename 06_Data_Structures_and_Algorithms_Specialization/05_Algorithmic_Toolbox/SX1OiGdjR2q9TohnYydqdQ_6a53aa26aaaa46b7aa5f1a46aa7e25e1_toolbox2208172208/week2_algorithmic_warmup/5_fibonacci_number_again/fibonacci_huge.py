@@ -1,3 +1,4 @@
+# Not done.
 # Task involves understanding of Pisano period.
 
 import random
