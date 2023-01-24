@@ -4,13 +4,18 @@ import numpy as np
 
 
 def optimal_value(capacity: int, weights: List[int], values: List[int]) -> int:
+    # 3 50 60 20 100 50 120 30
     value = 0.
     # write your code here
     # Sort the bug for the first example data
-    value_per_unit_weight = sorted([v/w for w, v in zip(weights, values)], reverse=True)
-    value_per_unit_weight_sorted_idx = [value_per_unit_weight.index(item) for item in value_per_unit_weight]
+    value_per_unit_weight = [v / w for w, v in zip(weights, values)]
+    value_per_unit_weight_sorted = sorted(value_per_unit_weight, reverse=True)
+
+    value_per_unit_weight_sorted_idx = [value_per_unit_weight.index(item) for item in value_per_unit_weight_sorted]
+
     sorted_values_and_weights = list(zip(values, weights))
     sorted_values_and_weights_sorted = [sorted_values_and_weights[i] for i in value_per_unit_weight_sorted_idx]
+
     while capacity > 0:
         for v, w in sorted_values_and_weights_sorted:
             if w != 0:
