@@ -16,7 +16,56 @@ def min_refills(distance: int, tank: int, stops: List[int]) -> int:
     Till the distance is not reached or the n
     '''
 
-    return -1
+    '''
+    950
+    400
+    4
+    200 375 550 750
+    '''
+    _stops = [0] + stops + [distance]
+    distance_between_stops = [b-a for a, b in zip(stops[:-1], stops[1:])] # what if this list becomes emtpy.
+    # if tank >= stops[-1]:
+    #     return 0
+    # elif tank < max(distance_between_stops):
+    #     return -1
+    # elif tank < stops[0]:
+    #     return -1
+    # else:
+    #     while distance != 0:
+    #         distance_travelled = 0
+    #         i = 0
+    #         for stop in stops:
+    #             if tank - stop >= 0:
+    #                 pass
+    #             else:
+    #                 pass
+    #             distance = distance
+    #
+    #
+    #     return -1
+
+    negative_current_tank = False
+    previous_tank = tank
+    distance_travelled = 0
+    delta_d = 0
+    refuel = 0
+    while distance_travelled < distance:
+        current_tank = previous_tank - delta_d
+        if current_tank < 0:
+            negative_current_tank = True
+            break
+        delta_d = distance_between_stops.pop(0)
+        if current_tank - delta_d < 0:
+            previous_tank = tank
+            refuel += 1
+        else:
+            previous_tank = current_tank
+        distance_travelled += delta_d
+
+    if negative_current_tank:
+        return -1
+    else:
+        return refuel
 
 
 if __name__ == '__main__':
